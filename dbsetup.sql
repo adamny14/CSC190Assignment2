@@ -1,0 +1,14 @@
+
+Drop DATABASE IF EXISTS List ;
+CREATE DATABASE List;
+use List;
+CREATE TABLE LOCATIONS
+(
+    User_ID INT NOT NULL AUTO_INCREMENT,
+    Nick_Name VARCHAR(255) NOT NULL,
+    Locations VARCHAR(255) NOT NULL,
+    Time_Date TIMESTAMP NOT NULL,
+    Picture_Name INT NOT NULL,
+    PRIMARY KEY (User_ID)
+
+);
