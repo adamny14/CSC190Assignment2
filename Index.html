@@ -238,9 +238,10 @@
       
     </div>
     <div class="col-sm-7 ">
+    <form action="" id="newReportForm">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="nickname" name="nickname" placeholder="Nick Name" type="text" required>
+          <input class="form-control" id="nickname" name="nickname" placeholder="Nickname" type="text" required>
         </div>
       </div>
       <textarea class="form-control" id="location" name="location" placeholder="Enter Location" rows="5"></textarea><br>
@@ -249,6 +250,7 @@
           <button class="btn btn-default pull-right" type="submit">Submit Your Information</button>
         </div>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -296,7 +298,27 @@ $(document).ready(function(){
         }
     });
   });
-})
+});
+
+$('#newReportForm').submit(ajaxSubmit);
+  function ajaxSubmit(){
+    var newReportForm = $(this).serialize();
+    // var x = document.forms["newAssetForm"]["AssetValue"].value;
+    // if (isNaN(x)) {
+    //     alert("Please insert a number for the Value");
+    // }else{
+    jQuery.ajax({
+      type:"POST",
+      url: "/insert.php",
+      data: newReportForm,
+      success:function(data){
+        // $("#assetFeedback tbody").append(data);
+        alert(data);
+      }
+    });
+  // }
+    return false;
+  }
 </script>
 
 </body>
