@@ -230,6 +230,8 @@
 
 <div id="about" class="container-fluid">
   <div class="row">
+	  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
 	<table class="table table-striped">
     <thead>
       <tr>
@@ -245,10 +247,10 @@ $server = 'localhost';
 $user = 'root';
 $pass = 'goodyear123!@#';
 $dbname = 'List';
-$con = mysql_connect($server, $user, $pass) or die("Can't connect");
+$con = new mysqli($server, $user, $pass, $dbname);
 mysql_select_db($dbname);
 /*------------------------------------*/
-$query = "SELECT * FROM `home` ORDER BY `Name`";
+$query = "SELECT * FROM LOCATIONS";
           $result = $con->query($query);
           if($result->num_rows > 0)
           {
@@ -287,7 +289,9 @@ $query = "SELECT * FROM `home` ORDER BY `Name`";
 } 
 ?>
 </tbody>
-</table>
+	  </table>
+</div>
+<div class="col-sm-6"></div>
 </div>
 </div>
 
