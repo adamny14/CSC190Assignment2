@@ -11,5 +11,9 @@ mysql_select_db($dbname);
 $nickname = $_POST['nickname'];
 $location = $_POST['location'];
 
+$response = mysql_db_query($dbname, "SELECT * FROM LOCATIONS");
 
+<p>
+echo(response);
+</p>
 ?>
