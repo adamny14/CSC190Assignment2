@@ -280,6 +280,7 @@ $query = "SELECT * FROM LOCATIONS";
 		echo "<td>". $Time_Date."</td>";
 		echo "</tr>";
 		echo "<tr>";
+		   echo "<td></td>";
 		echo "<td>".$Locations."</td>";
 		echo "</tr>";
 
