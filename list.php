@@ -220,40 +220,76 @@
 <div id="about" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
-      <h2>How can you help?</h2><br>
-      <h4>Do you know where Dr. Evil is? </h4><br>
-      <p>Enter your information in the form below to get tell us where in the world Dr. Evil is.</p>
+      <h2>This is where Dr. Evil has been spotted!</h2><br>
           </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-globe logo"></span>
     </div>
   </div>
 </div>
-<!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACT</h2>
+
+<div id="about" class="container-fluid">
   <div class="row">
-    <div class="col-sm-5">
-      <p>Help us find Dr. Evil</p>
-      
-    </div>
-    <div class="col-sm-7 ">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="nickname" name="nickname" placeholder="Nick Name" type="text" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="location" name="location" placeholder="Enter Location" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Submit Your Information</button>
-        </div>
-      </div>
-    </div>
-  </div>
+	<table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+/*------MySQL COnnection---------------*/
+$server = 'localhost';
+$user = 'root';
+$pass = 'goodyear123!@#';
+$dbname = 'List';
+$con = mysql_connect($server, $user, $pass) or die("Can't connect");
+mysql_select_db($dbname);
+/*------------------------------------*/
+$query = "SELECT * FROM `home` ORDER BY `Name`";
+          $result = $con->query($query);
+          if($result->num_rows > 0)
+          {
+            while($row = $result->fetch_assoc())
+            {
+              $Nick_Name = $row["Nick_Name"];
+              $Locations = $row["Locations"];
+              $Time_Date = $row["Time_Date"];
+              $img = $row["Picture_Name"];
+	      $picture = "";
+	      if($img == 1)
+		{
+        	$picture = "glyphicon glyphicon-tree-conifer";
+		}
+	      elseif($img == 2){
+        	$picture = "glyphicon glyphicon-cd";
+		}
+	      elseif($img ==3){
+        	$picture = "glyphicon glyphicon-knight";
+		}	
+	      else{
+        	$picture = "glyphicon glyphicon-apple";
+	        }
+            	echo "<tr>";
+		echo "<td><span class=\"". $picture .  "\"></span></td>";
+		echo "<td>". $Nick_Name . " reported </td>";
+		echo "<td>". $Time_Date."</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>".$Locations."</td>";
+		echo "</tr>";
+
+		}
+          }
+          $conn->close();
+} 
+?>
+</tbody>
+</table>
 </div>
-
-
+</div>
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
