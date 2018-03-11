@@ -287,6 +287,7 @@ $query = "SELECT * FROM LOCATIONS";
           }
           $conn->close();
 
+	    
 ?>
 </tbody>
 	  </table>
