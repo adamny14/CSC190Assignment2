@@ -308,13 +308,10 @@ $('#newReportForm').submit(ajaxSubmit);
       url: "./insert.php",
       data: newReportForm,
       success:function(data){
-        // $("#assetFeedback tbody").append(data);
         alert(data);
-	var array = JSON.parse(data);
-	alert(array);
       }
     });
-    // window.location.replace("/list.php");
+    window.location.replace("/list.php");
     return false;
   }
 </script>
