@@ -10,10 +10,17 @@ mysql_select_db($dbname);
 
 $nickname = $_POST['nickname'];
 $location = $_POST['location'];
+$picture = mt_rand(1,4);
 
-$response = mysql_db_query($dbname, "SELECT * FROM LOCATIONS");
+$sql = "INSERT INTO  Locations ".
+       "(Nick_Name,Locations,Picture_Name) ".
+       "VALUES ( '$nickname', '$location', '$picture',)";
 
-<p>
-echo(response);
-</p>
+$result = mysql_query($sql, $con);
+
+if($result != NULL) {
+	echo "Error: $mysql_error()";
+}
+
+echo "Success! $sql $result";
 ?>

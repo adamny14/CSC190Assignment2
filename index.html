@@ -303,20 +303,18 @@ $(document).ready(function(){
 $('#newReportForm').submit(ajaxSubmit);
   function ajaxSubmit(){
     var newReportForm = $(this).serialize();
-    // var x = document.forms["newAssetForm"]["AssetValue"].value;
-    // if (isNaN(x)) {
-    //     alert("Please insert a number for the Value");
-    // }else{
     jQuery.ajax({
       type:"POST",
-      url: "/insert.php",
+      url: "./insert.php",
       data: newReportForm,
       success:function(data){
         // $("#assetFeedback tbody").append(data);
         alert(data);
+	var array = JSON.parse(data);
+	alert(array);
       }
     });
-  // }
+    window.location.replace("/list.php");
     return false;
   }
 </script>
