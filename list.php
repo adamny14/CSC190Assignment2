@@ -285,7 +285,9 @@ $query = "SELECT * FROM LOCATIONS";
 		echo "</tr>";
 
 		}
-          }
+          }else{
+		echo "No Results"; 
+	}
           $conn->close();
 
 	    

@@ -8,19 +8,20 @@ $con = mysql_connect($server, $user, $pass) or die("Can't connect");
 mysql_select_db($dbname);
 /*------------------------------------*/
 
-$nickname = $_POST['nickname'];
-$location = $_POST['location'];
+$nickname = mysql_real_escape_string($_POST['nickname']);
+$location = mysql_real_escape_string($_POST['location']);
 $picture = mt_rand(1,4);
 
-$sql = "INSERT INTO  Locations ".
+$sql = "INSERT INTO  LOCATIONS ".
        "(Nick_Name,Locations,Picture_Name) ".
-       "VALUES ( '$nickname', '$location', '$picture',)";
+       "VALUES ( '$nickname', '$location', '$picture')";
 
 $result = mysql_query($sql, $con);
 
-if($result != NULL) {
-	echo "Error: $mysql_error()";
+if($result == NULL) {
+	echo "Query: '$sql', Error: " . mysql_error();
+}else{
+	echo "Success! Query: '$sql', Results: '$result'";
 }
-
-echo "Success! $sql $result";
+mysql_close($con);
 ?>
